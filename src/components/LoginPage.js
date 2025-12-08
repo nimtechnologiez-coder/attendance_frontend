@@ -18,14 +18,20 @@ const LoginPage = () => {
     setLoading(true);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/accounts/login/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const response = await fetch(
+        "https://attendance-backend-287i.onrender.com/api/login/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+        },
         body: JSON.stringify({
-          employee_id: formData.employee_id,
-          password: formData.password,
-        }),
-      });
+        employee_id: formData.employee_id,
+        password: formData.password,
+          }),
+        }
+      );
+
 
       const data = await response.json();
 
