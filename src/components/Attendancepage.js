@@ -1,6 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "../components/Images/image.png";
+
+const formatTime = (timeStr) => {
+  if (!timeStr) return "--:--";
+  const [hours, minutes] = timeStr.split(":");
+  const date = new Date();
+  date.setHours(hours);
+  date.setMinutes(minutes);
+  return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+};
 
 const AttendancePage = () => {
   const [status, setStatus] = useState("Loading...");
@@ -8,6 +17,7 @@ const AttendancePage = () => {
   const [attendance, setAttendance] = useState({ date: "", checkIn: "", checkOut: "", status: "" });
   const [employee, setEmployee] = useState({ name: "", email: "" });
   const [loading, setLoading] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [showCheckoutModal, setShowCheckoutModal] = useState(false);
   const [showCheckinModal, setShowCheckinModal] = useState(false);
@@ -15,16 +25,7 @@ const AttendancePage = () => {
 
   const token = localStorage.getItem("token");
 
-  const formatTime = (timeStr) => {
-    if (!timeStr) return "--:--";
-    const [hours, minutes] = timeStr.split(":");
-    const date = new Date();
-    date.setHours(hours);
-    date.setMinutes(minutes);
-    return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-  };
-
-  const fetchTodayAttendance = async () => {
+  const fetchTodayAttendance = useCallback(async () => {
     if (!token) return;
     try {
       const res = await fetch("http://localhost:8000/api/attendance/today/", {
@@ -66,11 +67,11 @@ const AttendancePage = () => {
       setStatus("Error fetching attendance");
       setStatusClass("status-box bg-danger text-white");
     }
-  };
+  }, [token]);
 
   useEffect(() => {
     fetchTodayAttendance();
-  }, []);
+  }, [fetchTodayAttendance]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -162,7 +163,7 @@ const AttendancePage = () => {
       {/* Navbar */}
       <nav className="navbar navbar-light bg-white shadow-sm">
         <div className="container d-flex justify-content-between align-items-center">
-          <a className="navbar-brand d-flex align-items-center" href="#">
+          <a className="navbar-brand d-flex align-items-center" href="/">
             <img src={logo} alt="Nim Technologies Logo" style={{ height: "50px", marginRight: "10px" }} />
           </a>
           <button className="navbar-toggler d-lg-none" type="button" onClick={() => setIsNavOpen(true)}>

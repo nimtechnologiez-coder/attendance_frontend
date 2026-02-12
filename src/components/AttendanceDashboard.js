@@ -33,7 +33,7 @@ export default function Dashboard() {
       {/* Navbar */}
       <nav className="navbar navbar-light bg-white shadow-sm">
         <div className="container d-flex justify-content-between align-items-center">
-          <a className="navbar-brand d-flex align-items-center" href="#">
+          <a className="navbar-brand d-flex align-items-center" href="/">
             <img
               src={logo}
               alt="Nim Technologies Logo"
@@ -43,7 +43,7 @@ export default function Dashboard() {
 
           {/* Mobile Menu Button */}
           <button
-            
+
             className="navbar-toggler d-lg-none"
             type="button"
             onClick={() => setIsNavOpen(true)}

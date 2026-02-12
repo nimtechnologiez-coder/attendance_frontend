@@ -60,7 +60,7 @@ const AttendanceHistory = () => {
       {/* Navbar */}
       <nav className="navbar navbar-light bg-white shadow-sm">
         <div className="container d-flex justify-content-between align-items-center">
-          <a className="navbar-brand d-flex align-items-center" href="#">
+          <a className="navbar-brand d-flex align-items-center" href="/">
             <img
               src={logo}
               alt="Company Logo"
@@ -94,9 +94,8 @@ const AttendanceHistory = () => {
 
         {/* Mobile Nav */}
         <div
-          className={`position-fixed top-0 start-0 h-100 p-4 ${
-            isNavOpen ? "show" : ""
-          }`}
+          className={`position-fixed top-0 start-0 h-100 p-4 ${isNavOpen ? "show" : ""
+            }`}
           style={{
             backgroundColor: "#ede3eaff",
             width: "80%",
@@ -166,8 +165,8 @@ const AttendanceHistory = () => {
                   {key === "present"
                     ? "Days Present"
                     : key === "late"
-                    ? "Days Late"
-                    : "Days Absent"}
+                      ? "Days Late"
+                      : "Days Absent"}
                 </p>
               </div>
             </div>

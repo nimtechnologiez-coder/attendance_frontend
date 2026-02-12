@@ -112,7 +112,7 @@ const EmployeePermissionForm = () => {
       {/* Navbar */}
       <nav className="navbar navbar-light bg-white shadow-sm">
         <div className="container d-flex justify-content-between align-items-center">
-          <a className="navbar-brand d-flex align-items-center" href="#">
+          <a className="navbar-brand d-flex align-items-center" href="/">
             <img src={logo} alt="Logo" style={{ height: "50px", marginRight: "10px" }} />
           </a>
 
