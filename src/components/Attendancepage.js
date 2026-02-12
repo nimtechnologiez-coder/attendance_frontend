@@ -146,7 +146,7 @@ const AttendancePage = () => {
   const handleCheckinClick = () => {
     const now = new Date();
     const cutoff = new Date();
-    cutoff.setHours(15, 30, 0, 0);
+    cutoff.setHours(11, 0, 0, 0);
 
     if (now > cutoff) {
       const timeStr = now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
@@ -257,7 +257,7 @@ const AttendancePage = () => {
         >
           <div className="p-4" style={{ background: "white", borderRadius: "15px", maxWidth: "400px", width: "90%", textAlign: "center" }}>
             <h5 className="fw-bold mb-2">❌ Check-In Closed</h5>
-            <p className="mb-1">Check-In is not allowed after <strong>03:30 PM</strong>.</p>
+            <p className="mb-1">Check-In is not allowed after <strong>11:00 AM</strong>.</p>
             <p className="text-muted mb-3">Current Time: <strong>{currentTime}</strong></p>
             <div className="d-flex justify-content-center gap-2 mt-3">
               <button className="btn btn-secondary flex-fill" onClick={() => setShowCheckinModal(false)}>Close</button>
