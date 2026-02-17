@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "./Images/image.png";
@@ -21,9 +21,9 @@ export default function LeaveRequest() {
     useEffect(() => {
         fetchLeaveTypes();
         fetchLeaveBalance();
-    }, []);
+    }, [fetchLeaveTypes, fetchLeaveBalance]);
 
-    const fetchLeaveTypes = async () => {
+    const fetchLeaveTypes = useCallback(async () => {
         try {
             const res = await fetch("http://localhost:8000/api/leave/types/", {
                 headers: { Authorization: `Token ${token}` },
@@ -39,9 +39,9 @@ export default function LeaveRequest() {
         } catch (err) {
             console.error("Error fetching leave types:", err);
         }
-    };
+    }, [token]);
 
-    const fetchLeaveBalance = async () => {
+    const fetchLeaveBalance = useCallback(async () => {
         try {
             const res = await fetch("http://localhost:8000/api/leave/balance/", {
                 headers: { Authorization: `Token ${token}` },
@@ -57,7 +57,7 @@ export default function LeaveRequest() {
         } catch (err) {
             console.error("Error fetching leave balance:", err);
         }
-    };
+    }, [token]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();

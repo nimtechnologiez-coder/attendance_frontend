@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "./Images/image.png";
@@ -16,9 +16,9 @@ export default function LeaveApproval() {
 
     useEffect(() => {
         fetchPendingLeaves();
-    }, []);
+    }, [fetchPendingLeaves]);
 
-    const fetchPendingLeaves = async () => {
+    const fetchPendingLeaves = useCallback(async () => {
         try {
             const res = await fetch("http://localhost:8000/api/leave/pending/", {
                 headers: { Authorization: `Token ${token}` },
@@ -35,7 +35,7 @@ export default function LeaveApproval() {
         } finally {
             setLoading(false);
         }
-    };
+    }, [token, navigate]);
 
     const handleApprove = async (leaveId) => {
         if (!window.confirm("Are you sure you want to approve this leave request?")) return;

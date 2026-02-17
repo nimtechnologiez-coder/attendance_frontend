@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "./Images/image.png";
@@ -13,9 +13,9 @@ export default function MyLeaves() {
 
     useEffect(() => {
         fetchMyLeaves();
-    }, []);
+    }, [fetchMyLeaves]);
 
-    const fetchMyLeaves = async () => {
+    const fetchMyLeaves = useCallback(async () => {
         try {
             const res = await fetch("http://localhost:8000/api/leave/my-requests/", {
                 headers: { Authorization: `Token ${token}` },
@@ -33,7 +33,7 @@ export default function MyLeaves() {
         } finally {
             setLoading(false);
         }
-    };
+    }, [token]);
 
     const getStatusBadge = (status) => {
         const badges = {
