@@ -28,7 +28,9 @@ A modern, geolocation-based attendance management system built with **Django** (
 - **Framework**: React.js (Create React App)
 - **Styling**: Bootstrap 5, Custom CSS
 - **PWA**: Workbox (Service Workers, Manifest)
-- **Routing**: React Router DOM
+- **Routing**: React Router DOM`
+
+
 
 ### Backend
 - **Framework**: Django, Django REST Framework (DRF)
@@ -56,13 +58,18 @@ A modern, geolocation-based attendance management system built with **Django** (
     - `manifest.json` configuration.
     - Service Worker setup using Workbox for offline support.
     - Cache management (v3).
+- [x] **Leave Management**: 
+    - Full workflow for leave application and approval.
+    - Integrated leave balance tracking.
+    - Simplified UI: Only **Sick Leave** and **Casual Leave** are displayed to employees.
+    - Backend stability: Resolved 500 errors in leave calculation and submission APIs.
 - [x] **UI/UX Polishing**:
-    - ESLint error cleanup.
+    - Cleaned up ESLint dependencies and hook ordering.
+    - Removed redundant "(days/year)" mentions in leave forms.
     - Responsive Dashboard and History pages.
 
 ### 🚧 Future Roadmap
 - [ ] **Face Recognition**: Add AI-based face verification during check-in.
-- [ ] **Leave Management**: Full workflow for leave application and approval by HR.
 - [ ] **Push Notifications**: Notify employees about check-in times and approvals.
 - [ ] **Admin Analytics**: Interactive charts for attendance trends.
 - [ ] **Multi-Location Support**: Allow assigning employees to different office branches.
