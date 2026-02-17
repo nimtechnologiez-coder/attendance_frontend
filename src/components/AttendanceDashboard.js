@@ -131,6 +131,51 @@ export default function Dashboard() {
               </p>
             </div>
           </div>
+
+          {/* Leave Request */}
+          <div className="col-12 col-md-6 col-lg-4">
+            <div
+              className="card card-hover text-center p-4"
+              onClick={() => navigate("/leave-request")}
+              style={{ cursor: "pointer" }}
+            >
+              <span style={{ fontSize: "2.2rem" }}>🏖️</span>
+              <h3 className="fw-semibold">Request Leave</h3>
+              <p className="text-muted">
+                Apply for sick leave, casual leave, etc.
+              </p>
+            </div>
+          </div>
+
+          {/* My Leaves */}
+          <div className="col-12 col-md-6 col-lg-4">
+            <div
+              className="card card-hover text-center p-4"
+              onClick={() => navigate("/my-leaves")}
+              style={{ cursor: "pointer" }}
+            >
+              <span style={{ fontSize: "2.2rem" }}>📋</span>
+              <h3 className="fw-semibold">My Leaves</h3>
+              <p className="text-muted">
+                View your leave history and status
+              </p>
+            </div>
+          </div>
+
+          {/* Leave Approval (Admin Only - shown to all for now) */}
+          <div className="col-12 col-md-6 col-lg-4">
+            <div
+              className="card card-hover text-center p-4"
+              onClick={() => navigate("/leave-approval")}
+              style={{ cursor: "pointer" }}
+            >
+              <span style={{ fontSize: "2.2rem" }}>✅</span>
+              <h3 className="fw-semibold">Leave Approval</h3>
+              <p className="text-muted">
+                Approve or reject leave requests (Admin)
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

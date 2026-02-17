@@ -9,6 +9,9 @@ import AttendanceHistory from "./components/AttendanceHistory";  // ✅ correct
 import HalfDayPermissionForm from "./components/Permission";     // ✅ correct
 import Dashboard from "./components/AttendanceDashboard";        // ✅ added
 import ForgotPasswordPage from "./components/ForgotPassword"; // ✅ new
+import LeaveRequest from "./components/LeaveRequest"; // ✅ Leave management
+import MyLeaves from "./components/MyLeaves"; // ✅ Leave management
+import LeaveApproval from "./components/LeaveApproval"; // ✅ Leave management
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -26,6 +29,9 @@ root.render(
         <Route path="/attendance-history" element={<AttendanceHistory />} />
         <Route path="/half-day-permission" element={<HalfDayPermissionForm />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} /> {/* ✅ new */}
+        <Route path="/leave-request" element={<LeaveRequest />} /> {/* ✅ Leave management */}
+        <Route path="/my-leaves" element={<MyLeaves />} /> {/* ✅ Leave management */}
+        <Route path="/leave-approval" element={<LeaveApproval />} /> {/* ✅ Leave management */}
       </Routes>
     </Router>
   </React.StrictMode>
