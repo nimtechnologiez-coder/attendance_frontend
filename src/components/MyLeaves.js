@@ -11,9 +11,6 @@ export default function MyLeaves() {
 
     const token = localStorage.getItem("token");
 
-    useEffect(() => {
-        fetchMyLeaves();
-    }, [fetchMyLeaves]);
 
     const fetchMyLeaves = useCallback(async () => {
         try {
@@ -34,6 +31,10 @@ export default function MyLeaves() {
             setLoading(false);
         }
     }, [token]);
+
+    useEffect(() => {
+        fetchMyLeaves();
+    }, [fetchMyLeaves]);
 
     const getStatusBadge = (status) => {
         const badges = {

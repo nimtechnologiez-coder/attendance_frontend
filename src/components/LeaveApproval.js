@@ -14,9 +14,6 @@ export default function LeaveApproval() {
 
     const token = localStorage.getItem("token");
 
-    useEffect(() => {
-        fetchPendingLeaves();
-    }, [fetchPendingLeaves]);
 
     const fetchPendingLeaves = useCallback(async () => {
         try {
@@ -36,6 +33,10 @@ export default function LeaveApproval() {
             setLoading(false);
         }
     }, [token, navigate]);
+
+    useEffect(() => {
+        fetchPendingLeaves();
+    }, [fetchPendingLeaves]);
 
     const handleApprove = async (leaveId) => {
         if (!window.confirm("Are you sure you want to approve this leave request?")) return;

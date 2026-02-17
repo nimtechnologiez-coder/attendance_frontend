@@ -18,10 +18,6 @@ export default function LeaveRequest() {
 
     const token = localStorage.getItem("token");
 
-    useEffect(() => {
-        fetchLeaveTypes();
-        fetchLeaveBalance();
-    }, [fetchLeaveTypes, fetchLeaveBalance]);
 
     const fetchLeaveTypes = useCallback(async () => {
         try {
@@ -58,6 +54,11 @@ export default function LeaveRequest() {
             console.error("Error fetching leave balance:", err);
         }
     }, [token]);
+
+    useEffect(() => {
+        fetchLeaveTypes();
+        fetchLeaveBalance();
+    }, [fetchLeaveTypes, fetchLeaveBalance]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
