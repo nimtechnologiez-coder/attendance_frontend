@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "../components/Images/image.png";
 import { CheckCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { API_ENDPOINTS } from "../apiConfig";
 
 const EmployeePermissionForm = () => {
   const navigate = useNavigate();
@@ -38,7 +39,7 @@ const EmployeePermissionForm = () => {
       }
 
       try {
-        const response = await fetch("http://localhost:8000/api/employee/me/", {
+        const response = await fetch(API_ENDPOINTS.EMPLOYEE_ME, {
           headers: { Authorization: `Token ${token}` },
         });
         const data = await response.json();
@@ -72,7 +73,7 @@ const EmployeePermissionForm = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:8000/api/permission/create/", {
+      const response = await fetch(API_ENDPOINTS.PERMISSION_CREATE, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

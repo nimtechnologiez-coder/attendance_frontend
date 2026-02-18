@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "../components/Images/image.png";
+import { API_ENDPOINTS } from "../apiConfig";
 
 const formatTime = (timeStr) => {
   if (!timeStr) return "--:--";
@@ -28,7 +29,7 @@ const AttendancePage = () => {
   const fetchTodayAttendance = useCallback(async () => {
     if (!token) return;
     try {
-      const res = await fetch("http://localhost:8000/api/attendance/today/", {
+      const res = await fetch(API_ENDPOINTS.ATTENDANCE_TODAY, {
         headers: { Authorization: `Token ${token}` },
       });
       const data = await res.json();
@@ -100,7 +101,8 @@ const AttendancePage = () => {
         const { latitude, longitude } = position.coords;
 
         try {
-          const res = await fetch(`http://localhost:8000/api/attendance/${type}/`, {
+          const endpoint = type === "checkin" ? API_ENDPOINTS.CHECK_IN : API_ENDPOINTS.CHECK_OUT;
+          const res = await fetch(endpoint, {
             method: "POST",
             headers: {
               Authorization: `Token ${token}`,

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "./Images/image.png";
+import { API_ENDPOINTS } from "../apiConfig";
 
 export default function LeaveRequest() {
     const navigate = useNavigate();
@@ -21,7 +22,7 @@ export default function LeaveRequest() {
 
     const fetchLeaveTypes = useCallback(async () => {
         try {
-            const res = await fetch("http://localhost:8000/api/leave/types/", {
+            const res = await fetch(API_ENDPOINTS.LEAVE_TYPES, {
                 headers: { Authorization: `Token ${token}` },
             });
             const data = await res.json();
@@ -39,7 +40,7 @@ export default function LeaveRequest() {
 
     const fetchLeaveBalance = useCallback(async () => {
         try {
-            const res = await fetch("http://localhost:8000/api/leave/balance/", {
+            const res = await fetch(API_ENDPOINTS.LEAVE_BALANCE, {
                 headers: { Authorization: `Token ${token}` },
             });
             const data = await res.json();
@@ -66,7 +67,7 @@ export default function LeaveRequest() {
         setMessage({ type: "", text: "" });
 
         try {
-            const res = await fetch("http://localhost:8000/api/leave/request/", {
+            const res = await fetch(API_ENDPOINTS.LEAVE_REQUEST, {
                 method: "POST",
                 headers: {
                     Authorization: `Token ${token}`,

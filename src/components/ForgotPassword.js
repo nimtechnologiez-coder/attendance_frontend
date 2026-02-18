@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../components/Images/image.png";
+import { API_ENDPOINTS } from "../apiConfig";
 
 const ForgotPasswordPage = () => {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ const ForgotPasswordPage = () => {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/api/accounts/forgot-password/", // Django API endpoint
+        API_ENDPOINTS.FORGOT_PASSWORD,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

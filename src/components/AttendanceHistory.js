@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "../components/Images/image.png";
+import { API_ENDPOINTS } from "../apiConfig";
 
 const AttendanceHistory = () => {
   const [attendanceData, setAttendanceData] = useState([]);
@@ -15,8 +16,7 @@ const AttendanceHistory = () => {
     if (!month) return;
 
     try {
-      const url = `http://localhost:8000/api/attendance/history/?month=${month}`;
-      const res = await fetch(url, {
+      const res = await fetch(API_ENDPOINTS.ATTENDANCE_HISTORY(month), {
         headers: { Authorization: `Token ${token}` },
       });
 

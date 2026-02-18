@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "./Images/image.png";
+import { API_ENDPOINTS } from "../apiConfig";
 
 export default function LeaveApproval() {
     const navigate = useNavigate();
@@ -17,7 +18,7 @@ export default function LeaveApproval() {
 
     const fetchPendingLeaves = useCallback(async () => {
         try {
-            const res = await fetch("http://localhost:8000/api/leave/pending/", {
+            const res = await fetch(API_ENDPOINTS.PENDING_LEAVE, {
                 headers: { Authorization: `Token ${token}` },
             });
             const data = await res.json();
@@ -43,7 +44,7 @@ export default function LeaveApproval() {
 
         setProcessingId(leaveId);
         try {
-            const res = await fetch(`http://localhost:8000/api/leave/${leaveId}/approve/`, {
+            const res = await fetch(API_ENDPOINTS.APPROVE_LEAVE(leaveId), {
                 method: "POST",
                 headers: { Authorization: `Token ${token}` },
             });
@@ -75,7 +76,7 @@ export default function LeaveApproval() {
 
         setProcessingId(selectedLeave.id);
         try {
-            const res = await fetch(`http://localhost:8000/api/leave/${selectedLeave.id}/reject/`, {
+            const res = await fetch(API_ENDPOINTS.REJECT_LEAVE(selectedLeave.id), {
                 method: "POST",
                 headers: {
                     Authorization: `Token ${token}`,

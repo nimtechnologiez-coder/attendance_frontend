@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "./Images/image.png";
+import { API_ENDPOINTS } from "../apiConfig";
 
 export default function MyLeaves() {
     const navigate = useNavigate();
@@ -14,7 +15,7 @@ export default function MyLeaves() {
 
     const fetchMyLeaves = useCallback(async () => {
         try {
-            const res = await fetch("http://localhost:8000/api/leave/my-requests/", {
+            const res = await fetch(API_ENDPOINTS.MY_LEAVE_REQUESTS, {
                 headers: { Authorization: `Token ${token}` },
             });
             const data = await res.json();

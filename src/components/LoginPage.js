@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";  // ✅ Added Link
+import { useNavigate, Link } from "react-router-dom";
 import logo from "../components/Images/image.png";
+import { API_ENDPOINTS } from "../apiConfig";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const LoginPage = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:8000/api/accounts/login/",
+        API_ENDPOINTS.LOGIN,
         {
           method: "POST",
           headers: {
